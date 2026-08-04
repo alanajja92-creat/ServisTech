@@ -1,0 +1,66 @@
+/* Mengatur agar latar belakang menyesuaikan layar HP */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6;
+    font-family: Arial, sans-serif;
+    /* Mencegah layar bisa di-scroll ke kanan-kiri secara tidak sengaja */
+    overflow-x: hidden; 
+}
+
+/* Area utama tempat konten berada, 
+   diberi jarak di bagian bawah agar tidak tertutup menu navigasi */
+.main-content {
+    padding: 20px;
+    padding-bottom: 80px; 
+}
+
+/* =========================================
+   DESAIN NAVIGASI BAWAH (DARK MODE)
+   ========================================= */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #0f111a; /* Warna latar belakang gelap persis desain */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    border-top: 1px solid #1c1f2e; /* Garis batas tipis di atas agar tidak menyatu dengan konten */
+    z-index: 1000;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: #646a82; /* Warna abu-abu redup (inactive) */
+    font-size: 10px; /* Ukuran font lebih kecil sedikit agar elegan */
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 25%; /* Membagi 4 menu sama rata */
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.nav-icon {
+    width: 22px;
+    height: 22px;
+    margin-bottom: 5px;
+    fill: currentColor; /* Warna ikon otomatis mengikuti warna teks */
+}
+
+/* Tampilan Menu Saat Sedang Terpilih (Active) atau Disentuh */
+.nav-item:hover, 
+.nav-item.active {
+    color: #8bb4f7; /* Biru terang keunguan seperti desain */
+}
+
+/* Mempertebal ikon dan memberi titik kecil jika sedang aktif (Opsional, efek tambahan) */
+.nav-item.active .nav-icon {
+    transform: scale(1.1);
+}
+}
