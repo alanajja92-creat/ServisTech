@@ -1,11 +1,21 @@
-/* Mengatur agar latar belakang menyesuaikan layar HP */
-body {
+/* Mereset semua jarak bawaan browser */
+html, body {
     margin: 0;
     padding: 0;
-    background-color: #f4f7f6;
-    font-family: Arial, sans-serif;
-    /* Mencegah layar bisa di-scroll ke kanan-kiri secara tidak sengaja */
-    overflow-x: hidden; 
+    width: 100vw;
+    min-height: 100vh;
+    overflow-x: hidden; /* Mencegah layar bisa digeser ke kanan-kiri (horizontal scroll) */
+    background-color: #f4f7f6; /* Sesuaikan dengan warna background aplikasimu */
+}
+
+/* Mengamankan konten dari area poni kamera (notch) HP modern */
+#app {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    box-sizing: border-box;
+    min-height: 100vh;
 }
 
 /* Area utama tempat konten berada, 
@@ -62,5 +72,4 @@ body {
 /* Mempertebal ikon dan memberi titik kecil jika sedang aktif (Opsional, efek tambahan) */
 .nav-item.active .nav-icon {
     transform: scale(1.1);
-}
 }

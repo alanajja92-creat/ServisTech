@@ -1,16 +1,26 @@
+/* --- Dropdown Item --- */
+/* (Memperbaiki selector yang terpotong) */
+.dropdown-item {
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.2s;
 }
-.dropdown-item:hover { background: var(--surface-light); }
-/* Toggle Switch */
+.dropdown-item:hover { 
+  background: var(--surface-light); 
+}
+
+/* --- Toggle Switch --- */
 .toggle-switch {
   position: relative;
   display: inline-block;
   width: 44px;
   height: 24px;
 }
-.toggle-switch input { opacity: 0; width: 0; height: 0; }
+.toggle-switch input { 
+  opacity: 0; 
+  width: 0; 
+  height: 0; 
+}
 .toggle-switch span {
   position: absolute;
   cursor: pointer;
@@ -24,18 +34,27 @@
   content: "";
   height: 18px; width: 18px;
   left: 3px; bottom: 3px;
-  background-color: white;
+  /* Menggunakan variabel warna agar adaptif, jika variabel tidak ada akan pakai putih */
+  background-color: var(--warna-kartu, #ffffff);
   transition: .4s;
   border-radius: 50%;
 }
-.toggle-switch input:checked + span { background-color: var(--primary); }
-.toggle-switch input:checked + span:before { transform: translateX(20px); }
-/* Settings */
-.settings-group { margin-bottom: var(--sp-24); }
+.toggle-switch input:checked + span { 
+  background-color: var(--primary); 
+}
+.toggle-switch input:checked + span:before { 
+  transform: translateX(20px); 
+}
+
+/* --- Settings --- */
+.settings-group { 
+  margin-bottom: var(--sp-24); 
+}
 .settings-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: var(--sp-12) 0;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  /* PERBAIKAN: Menggunakan variabel warna border dari sistem tema kita */
+  border-bottom: 1px solid var(--warna-border);
 }
