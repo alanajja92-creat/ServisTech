@@ -1,3 +1,26 @@
+/* 1. TEMA TERANG (Default) */
+:root {
+    --warna-background: #f4f7f6;
+    --warna-teks: #333333;
+    --warna-kartu: #ffffff;
+    --warna-border: #e0e0e0;
+}
+
+/* 2. TEMA GELAP (Aktif jika tag body punya class 'dark-mode') */
+body.dark-mode {
+    --warna-background: #121212;
+    --warna-teks: #ffffff;
+    --warna-kartu: #1e1e1e;
+    --warna-border: #333333;
+}
+
+/* 3. Terapkan variabelnya ke elemen dasar aplikasi */
+body {
+    background-color: var(--warna-background);
+    color: var(--warna-teks);
+    transition: background-color 0.3s ease, color 0.3s ease; /* Memberi efek transisi halus saat ganti tema */
+}
+
 @keyframes slideUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
