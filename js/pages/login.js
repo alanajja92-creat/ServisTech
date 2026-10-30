@@ -7,30 +7,30 @@ export const routeLogin = `
         <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 80vh; padding: 20px;">
             <div style="text-align: center; margin-bottom: 30px;">
                 <h2 class="app-brand" style="font-size: 32px; margin: 0;">ServisKu</h2>
-                <p style="color: #a0a4b8; margin-top: 5px;">Sistem Bengkel TAV</p>
+                <p style="color: var(--text-secondary); margin-top: 5px;">Sistem Bengkel TAV</p>
             </div>
 
             <!-- FORM LOGIN -->
-            <div id="formLogin" style="width: 100%; max-width: 320px; background-color: #16192b; padding: 25px; border-radius: 14px; border: 1px solid #22263e;">
-                <h3 style="color: white; margin-top: 0; margin-bottom: 20px; text-align: center;">Masuk Akun</h3>
-                <input type="text" id="loginUsername" placeholder="Username (NIS/NIP)" class="input-modern" style="margin-bottom: 15px; width: 100%; box-sizing: border-box;">
-                <input type="password" id="loginPassword" placeholder="Kata Sandi" class="input-modern" style="margin-bottom: 20px; width: 100%; box-sizing: border-box;">
-                <button id="btnLogin" style="width: 100%; padding: 12px; background-color: #3b82f6; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-bottom: 15px;">Masuk</button>
-                <p style="text-align: center; color: #a0a4b8; font-size: 13px; margin: 0;">Peserta baru? <span id="btnToRegister" style="color: #8bb4f7; cursor: pointer; font-weight: bold;">Daftar di sini</span></p>
+            <div id="formLogin" style="width: 100%; max-width: 320px; background-color: var(--bg-card); padding: 25px; border-radius: 14px; border: 1px solid var(--border-color);">
+                <h3 style="color: var(--text-primary); margin-top: 0; margin-bottom: 20px; text-align: center;">Masuk Akun</h3>
+                <input type="text" id="loginUsername" placeholder="Username (NIS/NIP)" class="input-modern" style="margin-bottom: 15px;color: var(--text-secondary); width: 100%; box-sizing: border-box;">
+                <input type="password" id="loginPassword" placeholder="Kata Sandi" class="input-modern" style="margin-bottom: 20px;color: var(--text-secondary); width: 100%; box-sizing: border-box;">
+                <button id="btnLogin" style="width: 100%; padding: 12px; background-color: #3b82f6; color: var(--text-primary); border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-bottom: 15px;">Masuk</button>
+                <p style="text-align: center; color: var(--text-secondary); font-size: 13px; margin: 0;">Peserta baru? <span id="btnToRegister" style="color: var(--accent-text); cursor: pointer; font-weight: bold;">Daftar di sini</span></p>
             </div>
 
             <!-- FORM DAFTAR (Disembunyikan di awal) -->
-            <div id="formRegister" style="width: 100%; max-width: 320px; background-color: #16192b; padding: 25px; border-radius: 14px; border: 1px solid #22263e; display: none;">
-                <h3 style="color: white; margin-top: 0; margin-bottom: 20px; text-align: center;">Pendaftaran Peserta</h3>
-                <input type="text" id="regNama" placeholder="Nama Lengkap" class="input-modern" style="margin-bottom: 15px; width: 100%; box-sizing: border-box;">
-                <input type="text" id="regUsername" placeholder="Username (NIS/NIP)" class="input-modern" style="margin-bottom: 15px; width: 100%; box-sizing: border-box;">
-                <input type="password" id="regPassword" placeholder="Kata Sandi" class="input-modern" style="margin-bottom: 15px; width: 100%; box-sizing: border-box;">
-                <select id="regRole" class="input-modern" style="margin-bottom: 20px; width: 100%; box-sizing: border-box;">
+            <div id="formRegister" style="width: 100%; max-width: 320px; background-color: var(--bg-card); padding: 25px; border-radius: 14px; border: 1px solid var(--border-color); display: none;">
+                <h3 style="color: var(--text-primary); margin-top: 0; margin-bottom: 20px; text-align: center;">Pendaftaran Peserta</h3>
+                <input type="text" id="regNama" placeholder="Nama Lengkap" class="input-modern" style="margin-bottom: 15px; color: var(--text-secondary); width: 100%; box-sizing: border-box;">
+                <input type="text" id="regUsername" placeholder="Username (NIS/NIP)" class="input-modern" style="margin-bottom: 15px; color: var(--text-secondary); width: 100%; box-sizing: border-box;">
+                <input type="password" id="regPassword" placeholder="Kata Sandi" class="input-modern" style="margin-bottom: 15px; color: var(--text-secondary); width: 100%; box-sizing: border-box;">
+                <select id="regRole" class="input-modern" style="margin-bottom: 20px; color: var(--text-secondary); width: 100%; box-sizing: border-box;">
                     <option value="siswa">Siswa TAV</option>
                     <option value="guru">Guru / Admin</option>
                 </select>
-                <button id="btnRegister" style="width: 100%; padding: 12px; background-color: #10b981; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-bottom: 15px;">Daftar Akun</button>
-                <p style="text-align: center; color: #a0a4b8; font-size: 13px; margin: 0;">Sudah punya akun? <span id="btnToLogin" style="color: #8bb4f7; cursor: pointer; font-weight: bold;">Masuk</span></p>
+                <button id="btnRegister" style="width: 100%; padding: 12px; background-color: #10b981; color: var(--text-primary); border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-bottom: 15px;">Daftar Akun</button>
+                <p style="text-align: center; color: var(--text-secondary); font-size: 13px; margin: 0;">Sudah punya akun? <span id="btnToLogin" style="color: var(--accent-text); cursor: pointer; font-weight: bold;">Masuk</span></p>
             </div>
             
             <!-- Teks Notifikasi -->

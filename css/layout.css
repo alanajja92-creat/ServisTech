@@ -5,7 +5,7 @@ html, body {
     width: 100vw;
     min-height: 100vh;
     overflow-x: hidden; /* Mencegah layar bisa digeser ke kanan-kiri (horizontal scroll) */
-    background-color: #f4f7f6; /* Sesuaikan dengan warna background aplikasimu */
+    background-color: var(--bg-page); /* Ikut warna tema aktif (gelap/terang) */
 }
 
 /* Mengamankan konten dari area poni kamera (notch) HP modern */
@@ -33,12 +33,12 @@ html, body {
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: #0f111a; /* Warna latar belakang gelap persis desain */
+    background-color: var(--bg-nav); /* Warna latar belakang menu bawah, ikut tema */
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 70px;
-    border-top: 1px solid #1c1f2e; /* Garis batas tipis di atas agar tidak menyatu dengan konten */
+    border-top: 1px solid var(--border-color); /* Garis batas tipis di atas agar tidak menyatu dengan konten */
     z-index: 1000;
 }
 

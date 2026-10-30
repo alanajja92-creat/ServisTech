@@ -9,7 +9,7 @@ export const routeDetailServis = `
             <!-- Tampilan Loading awal sebelum data detail dirender oleh JS -->
             <div style="text-align: center; padding: 40px 20px;">
                 <span style="font-size: 30px;">⏳</span>
-                <p style="color: #a0a4b8; font-size: 14px; margin-top: 10px;">Memuat detail servis...</p>
+                <p style="color: var(--text-secondary); font-size: 14px; margin-top: 10px;">Memuat detail servis...</p>
             </div>
         </div>
     `;
@@ -144,14 +144,14 @@ export function renderDetailServis() {
             <div style="background-color: rgba(56, 189, 248, 0.1); padding: 15px; border-radius: 12px; border: 1px solid #38bdf8; margin-top: 20px;">
                 <label style="font-weight:bold; color: #38bdf8; display:block; margin-bottom:10px;">🛠️ Validasi & Ubah Status (Akses Guru):</label>
 
-                <select id="pilihanStatus" style="width: 100%; padding: 12px; border-radius: 8px; background: #16192b; color: white; border: 1px solid #22263e; outline: none; margin-bottom: 15px;">
+                <select id="pilihanStatus" style="width: 100%; padding: 12px; border-radius: 8px; background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color); outline: none; margin-bottom: 15px;">
                     <option value="Menunggu Antrean" ${item.status === 'Menunggu Antrean' ? 'selected' : ''}>Menunggu Antrean</option>
                     <option value="Proses" ${item.status === 'Proses' ? 'selected' : ''}>Sedang Proses</option>
                     <option value="Selesai" ${item.status === 'Selesai' ? 'selected' : ''}>Selesai</option>
                 </select>
 
                 <!-- Tombol ini diarahkan ke fungsi baru untuk mengecek isi dropdown dulu -->
-                <button onclick="cekKondisiStatus('${item.id_servis}', '${item.username}', this)" style="width: 100%; padding: 14px; background-color: #10b981; border: none; border-radius: 8px; color: white; font-weight: bold; cursor: pointer; font-size: 14px;">
+                <button onclick="cekKondisiStatus('${item.id_servis}', '${item.username}', this)" style="width: 100%; padding: 14px; background-color: #10b981; border: none; border-radius: 8px; color: var(--text-primary); font-weight: bold; cursor: pointer; font-size: 14px;">
                     Simpan Perubahan Status
                 </button>
             </div>
@@ -160,28 +160,28 @@ export function renderDetailServis() {
         // MASUKKAN KODE POP-UP DI SINI (Hanya dirender jika yang login guru)
         html += `
             <div id="modalPoinGuru" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; justify-content: center; align-items: center;">
-                <div style="background: #16192b; border: 1px solid #22263e; width: 90%; max-width: 400px; border-radius: 12px; padding: 20px; color: white; font-family: sans-serif; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
+                <div style="background: var(--bg-card); border: 1px solid var(--border-color); width: 90%; max-width: 400px; border-radius: 12px; padding: 20px; color: var(--text-primary); font-family: sans-serif; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
 
                     <h3 style="margin-top: 0; color: #3b82f6; text-align: center; margin-bottom: 10px;">Validasi & Beri Poin</h3>
-                    <p style="font-size: 13px; color: #a0a4b8; text-align: center; margin-bottom: 20px;">Tentukan tingkat kesulitan alat yang diservis sebelum menyelesaikannya.</p>
+                    <p style="font-size: 13px; color: var(--text-secondary); text-align: center; margin-bottom: 20px;">Tentukan tingkat kesulitan alat yang diservis sebelum menyelesaikannya.</p>
 
                     <div style="margin-bottom: 15px;">
-                        <label style="display: block; padding: 12px; background: #22263e; border-radius: 8px; margin-bottom: 8px; cursor: pointer; border: 1px solid transparent;">
+                        <label style="display: block; padding: 12px; background: var(--border-color); border-radius: 8px; margin-bottom: 8px; cursor: pointer; border: 1px solid transparent;">
                             <input type="radio" name="tingkat_poin" value="25" checked style="margin-right: 10px;">
-                            🟢 <b style="color: white;">Ringan (+25 Poin)</b>
-                            <div style="font-size: 11px; color: #a0a4b8; margin-left: 28px; margin-top: 4px;">Kabel putus, ganti steker, solder ulang.</div>
+                            🟢 <b style="color: var(--text-primary);">Ringan (+25 Poin)</b>
+                            <div style="font-size: 11px; color: var(--text-secondary); margin-left: 28px; margin-top: 4px;">Kabel putus, ganti steker, solder ulang.</div>
                         </label>
 
-                        <label style="display: block; padding: 12px; background: #22263e; border-radius: 8px; margin-bottom: 8px; cursor: pointer; border: 1px solid transparent;">
+                        <label style="display: block; padding: 12px; background: var(--border-color); border-radius: 8px; margin-bottom: 8px; cursor: pointer; border: 1px solid transparent;">
                             <input type="radio" name="tingkat_poin" value="50" style="margin-right: 10px;">
-                            🟡 <b style="color: white;">Sedang (+50 Poin)</b>
-                            <div style="font-size: 11px; color: #a0a4b8; margin-left: 28px; margin-top: 4px;">Ganti elemen, cek multitester.</div>
+                            🟡 <b style="color: var(--text-primary);">Sedang (+50 Poin)</b>
+                            <div style="font-size: 11px; color: var(--text-secondary); margin-left: 28px; margin-top: 4px;">Ganti elemen, cek multitester.</div>
                         </label>
 
-                        <label style="display: block; padding: 12px; background: #22263e; border-radius: 8px; margin-bottom: 8px; cursor: pointer; border: 1px solid transparent;">
+                        <label style="display: block; padding: 12px; background: var(--border-color); border-radius: 8px; margin-bottom: 8px; cursor: pointer; border: 1px solid transparent;">
                             <input type="radio" name="tingkat_poin" value="100" style="margin-right: 10px;">
-                            🔴 <b style="color: white;">Berat (+100 Poin)</b>
-                            <div style="font-size: 11px; color: #a0a4b8; margin-left: 28px; margin-top: 4px;">Lacak jalur rumit, ganti IC/Flyback, mati total.</div>
+                            🔴 <b style="color: var(--text-primary);">Berat (+100 Poin)</b>
+                            <div style="font-size: 11px; color: var(--text-secondary); margin-left: 28px; margin-top: 4px;">Lacak jalur rumit, ganti IC/Flyback, mati total.</div>
                         </label>
                     </div>
 
@@ -196,7 +196,7 @@ export function renderDetailServis() {
 
                     <div style="display: flex; gap: 10px;">
                         <button onclick="tutupModalPoin()" style="flex: 1; padding: 12px; background: transparent; border: 1px solid #ef4444; color: #ef4444; border-radius: 8px; cursor: pointer; font-weight: bold;">Batal</button>
-                        <button onclick="hitungDanKirimPoin(event)" style="flex: 1; padding: 12px; background: #3b82f6; border: none; color: white; border-radius: 8px; cursor: pointer; font-weight: bold;">Kirim Poin</button>
+                        <button onclick="hitungDanKirimPoin(event)" style="flex: 1; padding: 12px; background: #3b82f6; border: none; color: var(--text-primary); border-radius: 8px; cursor: pointer; font-weight: bold;">Kirim Poin</button>
                     </div>
                 </div>
             </div>

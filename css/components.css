@@ -35,7 +35,7 @@
   height: 18px; width: 18px;
   left: 3px; bottom: 3px;
   /* Menggunakan variabel warna agar adaptif, jika variabel tidak ada akan pakai putih */
-  background-color: var(--warna-kartu, #ffffff);
+  background-color: var(--bg-card);
   transition: .4s;
   border-radius: 50%;
 }
@@ -56,5 +56,5 @@
   align-items: center;
   padding: var(--sp-12) 0;
   /* PERBAIKAN: Menggunakan variabel warna border dari sistem tema kita */
-  border-bottom: 1px solid var(--warna-border);
+  border-bottom: 1px solid var(--border-color);
 }
