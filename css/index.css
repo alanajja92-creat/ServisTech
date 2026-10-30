@@ -1,23 +1,46 @@
-/* 1. TEMA TERANG (Default) */
-:root {
-    --warna-background: #f4f7f6;
-    --warna-teks: #333333;
-    --warna-kartu: #ffffff;
-    --warna-border: #e0e0e0;
-}
-
-/* 2. TEMA GELAP (Aktif jika tag body punya class 'dark-mode') */
-body.dark-mode {
-    --warna-background: #121212;
-    --warna-teks: #ffffff;
-    --warna-kartu: #1e1e1e;
-    --warna-border: #333333;
-}
-
-/* 3. Terapkan variabelnya ke elemen dasar aplikasi */
+/* ==========================================================
+   SISTEM VARIABEL TEMA (GELAP / TERANG)
+   ==========================================================
+   Nilai default (tanpa class tambahan di <body>) adalah tema
+   GELAP, karena itulah tampilan asli aplikasi ini sejak awal.
+   Saat body diberi class 'light-mode' (oleh js/theme.js),
+   nilai-nilai di bawah otomatis berubah ke versi terang. */
+:root,
 body {
-    background-color: var(--warna-background);
-    color: var(--warna-teks);
+    --bg-page: #0f111a;         /* latar belakang halaman */
+    --bg-card: #16192b;         /* latar kartu / kotak utama */
+    --bg-card-alt: #1e293b;     /* latar kartu sekunder (item kecil) */
+    --border-color: #22263e;    /* warna garis batas */
+    --text-primary: #ffffff;    /* warna teks utama */
+    --text-secondary: #a0a4b8;  /* warna teks abu-abu / redup */
+    --bg-nav: #0f111a;          /* latar menu navigasi bawah */
+    --bg-card-2: #1a1d2d;       /* kartu login, daftar, item servis */
+    --bg-input: #1f233a;        /* kolom isian (input/select/textarea) */
+    --surface-strong: #2c3250;  /* tab aktif, hover, garis input, track toggle */
+    --surface-soft: #2a2e42;    /* garis pemisah & ikon halus */
+    --text-soft: #d1d5db;       /* teks isi kotak detail */
+    --accent-text: #8bb4f7;     /* teks biru muda (judul kecil, link) */
+}
+
+body.light-mode {
+    --bg-page: #f4f7f6;
+    --bg-card: #ffffff;
+    --bg-card-alt: #eef1f5;
+    --border-color: #e0e0e0;
+    --text-primary: #1a1d2d;
+    --text-secondary: #64748b;
+    --bg-nav: #ffffff;
+    --bg-card-2: #ffffff;
+    --bg-input: #f1f5f9;
+    --surface-strong: #cbd5e1;
+    --surface-soft: #e2e8f0;
+    --text-soft: #334155;
+    --accent-text: #2563eb;
+}
+/* Terapkan variabelnya ke elemen dasar aplikasi */
+body {
+    background-color: var(--bg-page);
+    color: var(--text-primary);
     transition: background-color 0.3s ease, color 0.3s ease; /* Memberi efek transisi halus saat ganti tema */
 }
 

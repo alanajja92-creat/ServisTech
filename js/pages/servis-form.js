@@ -24,7 +24,7 @@ export const routeTambahServis = `
 
                     <div class="form-group">
                         <label>Nama Pelanggan *</label>
-                        <input type="text" id="tsNamaPelanggan" placeholder="Masukkan nama lengkap pelanggan" required class="input-modern">
+                        <input type="text" id="tsNamaPelanggan" placeholder="Masukkan nama lengkap pelanggan" required class="input-modern" style = color: var(--text-secondary);>
                     </div>
                     <div class="form-group">
                         <label>Alamat</label>

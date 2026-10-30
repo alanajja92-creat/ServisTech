@@ -11,29 +11,29 @@ export const routeDashboardSiswa = `
             <div class="dashboard-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
                 <div>
                     <h3 class="app-brand" style="margin:0; font-size: 20px;" id="welcomeName">Halo, Pengguna!</h3>
-                    <p style="margin: 5px 0 0 0; color: #a0a4b8; font-size: 13px;">Teknik Audio Video - ServisKu</p>
+                    <p style="margin: 5px 0 0 0; color: var(--text-secondary); font-size: 13px;">Teknik Audio Video - ServisKu</p>
                 </div>
                 <!-- Poin Loyalty -->
-                <div style="background-color: #16192b; padding: 8px 15px; border-radius: 10px; border: 1px solid #22263e; display: flex; align-items: center; gap: 8px;">
+                <div style="background-color: var(--bg-card); padding: 8px 15px; border-radius: 10px; border: 1px solid var(--border-color); display: flex; align-items: center; gap: 8px;">
                     <span style="font-size: 16px;">⭐</span>
                     <div>
-                        <div style="font-size: 10px; color: #a0a4b8;">Poin Anda</div>
+                        <div style="font-size: 10px; color: var(--text-secondary);">Poin Anda</div>
                         <div style="font-size: 14px; font-weight: bold; color: #f59e0b;" id="userPoin">0</div>
                     </div>
                 </div>
             </div>
 
             <!-- Konten Dashboard Lainnya (Statistik/Antrean) -->
-            <div style="background-color: #16192b; padding: 20px; border-radius: 14px; border: 1px solid #22263e; text-align: center;">
-                <h4 style="color: white; margin-top: 0; margin-bottom: 15px;">Status Alat Servis Anda</h4>
+            <div style="background-color: var(--bg-card); padding: 20px; border-radius: 14px; border: 1px solid var(--border-color); text-align: center;">
+                <h4 style="color: var(--text-primary); margin-top: 0; margin-bottom: 15px;">Status Alat Servis Anda</h4>
                 
                 <!-- TEMPAT DAFTAR SERVIS AKAN MUNCUL SECARA OTOMATIS -->
                 <div id="dashboardServisContainer">
                     <!-- Jika belum ada servis, teks/tombol kosong akan diatur otomatis oleh JavaScript -->
-                    <p style="color: #a0a4b8; font-size: 13px; margin-bottom: 15px;">Belum ada perangkat yang didaftarkan untuk diservis.</p>
+                    <p style="color: var(--text-secondary); font-size: 13px; margin-bottom: 15px;">Belum ada perangkat yang didaftarkan untuk diservis.</p>
                 </div>
 
-                <a href="#tambah-servis" style="display: inline-block; margin-top: 10px; padding: 10px 20px; background-color: #3b82f6; color: white; text-decoration: none; border-radius: 8px; font-size: 13px; font-weight: bold;">+ Daftarkan Servis Baru</a>
+                <a href="#tambah-servis" style="display: inline-block; margin-top: 10px; padding: 10px 20px; background-color: #3b82f6; color: var(--text-primary); text-decoration: none; border-radius: 8px; font-size: 13px; font-weight: bold;">+ Daftarkan Servis Baru</a>
             </div>
             
         </div>
@@ -46,14 +46,14 @@ export const routeDashboardGuru = `
             <div class="dashboard-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
                 <div>
                     <h3 class="app-brand" style="margin:0; font-size: 20px;" id="welcomeName">Halo, Guru!</h3>
-                    <p style="margin: 5px 0 0 0; color: #a0a4b8; font-size: 13px;">Panel Admin - Teknik Audio Video</p>
+                    <p style="margin: 5px 0 0 0; color: var(--text-secondary); font-size: 13px;">Panel Admin - Teknik Audio Video</p>
                 </div>
             </div>
 
             <!-- Ringkasan Bengkel -->
-            <div style="background-color: #16192b; padding: 20px; border-radius: 14px; border: 1px solid #22263e; text-align: center; margin-bottom: 20px;">
-                <h4 style="color: white; margin-top: 0;">Ringkasan Bengkel</h4>
-                <p style="color: #a0a4b8; font-size: 13px; margin: 0;">Data statistik & antrean servis masuk dari seluruh siswa.</p>
+            <div style="background-color: var(--bg-card); padding: 20px; border-radius: 14px; border: 1px solid var(--border-color); text-align: center; margin-bottom: 20px;">
+                <h4 style="color: var(--text-secondary); margin-top: 0;">Ringkasan Bengkel</h4>
+                <p style="color: var(--text-secondary); font-size: 13px; margin: 0;">Data statistik & antrean servis masuk dari seluruh siswa.</p>
             </div>
 
             <!-- Kartu Statistik Global (Ditambahi ID untuk inject angka otomatis) -->
@@ -81,7 +81,7 @@ export const routeDashboardGuru = `
             
             <!-- Kontainer Tempat Render Data Asli -->
             <div id="guruServisContainer" class="servis-list" style="display: flex; flex-direction: column; gap: 12px;">
-                <div style="text-align: center; padding: 30px; color: #a0a4b8;">
+                <div style="text-align: center; padding: 30px; color: var(--text-secondary);">
                     <span>⏳ Memuat data servis dari server...</span>
                 </div>
             </div>
@@ -121,7 +121,7 @@ export function renderDashboardSiswa(list) {
     if (list.length === 0) {
         container.innerHTML = `
             <div class="status-card-empty">
-                <p style="color: #a0a4b8; font-size: 13px; margin-bottom: 15px;">Belum ada perangkat yang didaftarkan untuk diservis.</p>
+                <p style="color: var(--text-secondary); font-size: 13px; margin-bottom: 15px;">Belum ada perangkat yang didaftarkan untuk diservis.</p>
             </div>
         `;
         return;
@@ -133,14 +133,14 @@ export function renderDashboardSiswa(list) {
     let html = '';
     dataTerbaru.forEach(item => {
         html += `
-            <div class="servis-card-item" style="background: #1e293b; padding: 12px; border-radius: 8px; margin-top: 10px; text-align: left;">
+            <div class="servis-card-item" style="background: var(--bg-card-alt); padding: 12px; border-radius: 8px; margin-top: 10px; text-align: left;">
                 <div class="servis-header" style="display: flex; justify-content: space-between; margin-bottom: 5px;">
                     <span class="servis-id" style="font-weight: bold; color: #38bdf8;">#${item.id_servis}</span>
                     <span class="badge-status" style="font-size: 12px; color: #fbbf24;">⏳ ${item.status}</span>
                 </div>
                 <div class="servis-body">
-                    <h4 style="margin: 0 0 4px 0; color: white;">${item.nama_pelanggan}</h4>
-                    <p style="margin: 0; color: #a0a4b8; font-size: 13px;">${item.merk} - ${item.keluhan}</p>
+                    <h4 style="margin: 0 0 4px 0; color: var(--text-primary);">${item.nama_pelanggan}</h4>
+                    <p style="margin: 0; color: var(--text-secondary); font-size: 13px;">${item.merk} - ${item.keluhan}</p>
                 </div>
             </div>
         `;
@@ -250,15 +250,15 @@ export function renderDashboardGuru(list) {
         }
 
         html += `
-            <div class="servis-card" style="background-color: #16192b; border: 1px solid #22263e; border-radius: 14px; padding: 15px;">
+            <div class="servis-card" style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 14px; padding: 15px;">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                    <span style="font-size: 12px; font-weight: bold; color: #8bb4f7;">#${item.id_servis}</span>
+                    <span style="font-size: 12px; font-weight: bold; color: var(--accent-text);">#${item.id_servis}</span>
                     <span class="badge" style="${badgeStyle} padding: 3px 8px; border-radius: 6px; font-size: 10px;">${badgeText}</span>
                 </div>
                 <div style="font-size: 11px; color: #38bdf8; font-weight: bold; margin-bottom: 4px;">👨‍🔧 Siswa: ${item.username || '-'}</div>
-                <div style="font-size: 14px; font-weight: bold; color: white; margin-bottom: 4px;">${item.nama_pelanggan}</div>
-                <div style="font-size: 12px; color: #a0a4b8; margin-bottom: 10px;">${item.merk} - ${item.keluhan}</div>
-                <button class="btn-detail" data-id="${item.id_servis}" style="width: 100%; padding: 8px; background-color: #3b82f6; border: none; border-radius: 8px; color: white; font-weight: bold; font-size: 11px; cursor: pointer;">Detail / Validasi</button>
+                <div style="font-size: 14px; font-weight: bold; color: var(--text-primary); margin-bottom: 4px;">${item.nama_pelanggan}</div>
+                <div style="font-size: 12px; color: var(--text-secondary); margin-bottom: 10px;">${item.merk} - ${item.keluhan}</div>
+                <button class="btn-detail" data-id="${item.id_servis}" style="width: 100%; padding: 8px; background-color: #3b82f6; border: none; border-radius: 8px; color: var(--text-primary); font-weight: bold; font-size: 11px; cursor: pointer;">Detail / Validasi</button>
             </div>
         `;
     });

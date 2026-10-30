@@ -16,7 +16,7 @@ import {
 import { routeTambahServis, isiUsernameOtomatis, attachServisFormEvents } from './pages/servis-form.js';
 import { routeServis, attachServisListEvents } from './pages/servis-list.js';
 import { routePoin, attachPoinGlobals } from './pages/poin.js';
-import { routePengaturan, isiProfilPengaturan, attachLogoutEvent } from './pages/pengaturan.js';
+import { routePengaturan, isiProfilPengaturan, isiTemaToggle, attachThemeToggleEvent, attachLogoutEvent } from './pages/pengaturan.js';
 import { routeDetailServis, renderDetailServis, attachDetailServisGlobals } from './pages/detail-servis.js';
 
 // Daftar ruangan (halaman) yang ada di aplikasi kita
@@ -161,6 +161,10 @@ export function initRouter() {
         if (hash === 'pengaturan' && sesiUser) {
             isiProfilPengaturan(sesiUser);
         }
+        // BARU: samakan tampilan toggle Mode Gelap dengan tema aktif
+        if (hash === 'pengaturan') {
+            isiTemaToggle();
+        }
 
         // Jalankan kembali tombol-tombol interaktif (jika ada)
         if (typeof jalankanLogikaInteraktif === 'function') {
@@ -179,6 +183,7 @@ export function initRouter() {
     // berperilaku identik karena setiap blok memeriksa e.target sendiri.
     attachAuthEvents();
     attachLogoutEvent();
+    attachThemeToggleEvent();
     attachServisFormEvents();
     attachServisListEvents();
 

@@ -27,7 +27,7 @@ export const routeServis = `
                 <!-- Tampilan Loading -->
                 <div style="text-align: center; padding: 40px 20px;">
                     <span style="font-size: 30px;">⏳</span>
-                    <p style="color: #a0a4b8; font-size: 14px; margin-top: 10px;">Mengambil data servis-mu...</p>
+                    <p style="color: var(--text-secondary); font-size: 14px; margin-top: 10px;">Mengambil data servis-mu...</p>
                 </div>
             </div>
             
