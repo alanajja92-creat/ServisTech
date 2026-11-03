@@ -43,6 +43,11 @@ export const routePengaturan = `
 
                 <div class="section-title-small" style="margin-top: 15px; margin-bottom: 5px;">Akun & Bantuan</div>
 
+                <!-- Persetujuan Akun (hanya tampil untuk guru, lihat isiProfilPengaturan) -->
+                <a href="#persetujuan" id="menuPersetujuan" class="setting-item" style="display: none; align-items: center; gap: 12px; background-color: var(--bg-card); padding: 15px; border-radius: 12px; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-primary); font-size: 14px;">
+                    <span style="font-size: 18px;">✅</span> Persetujuan Akun
+                </a>
+
                 <!-- Opsi Edit Profil -->
                 <a href="#" class="setting-item" style="display: flex; align-items: center; gap: 12px; background-color: var(--bg-card); padding: 15px; border-radius: 12px; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-primary); font-size: 14px;">
                     <span style="font-size: 18px;">👤</span> Edit Profil
@@ -71,6 +76,9 @@ export function isiProfilPengaturan(sesiUser) {
     if (elNama) elNama.innerText = nama;
     if (elRole) elRole.innerText = roleLabel + ' - Teknik Audio Video';
     if (elAvatar) elAvatar.innerText = nama.trim().charAt(0).toUpperCase() || 'U';
+        // Menu Persetujuan Akun hanya untuk guru
+    const menuPersetujuan = document.getElementById('menuPersetujuan');
+    if (menuPersetujuan && roleLabel === 'Guru') menuPersetujuan.style.display = 'flex';
 }
 
 // Menyamakan tampilan toggle "Mode Gelap" dengan tema yang sedang aktif

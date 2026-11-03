@@ -94,7 +94,7 @@ export function attachAuthEvents() {
             .then(response => response.json())
             .then(data => {
                 if (data.status === "success") {
-                    msgBox.innerText = "Pendaftaran Berhasil! Silakan Masuk.";
+                    msgBox.innerText = "Pendaftaran berhasil! Akunmu menunggu persetujuan guru sebelum bisa dipakai masuk.";
                     msgBox.style.color = "#10b981";
                     document.getElementById('regNama').value = '';
                     document.getElementById('regUsername').value = '';
@@ -104,7 +104,7 @@ export function attachAuthEvents() {
                         document.getElementById('formRegister').style.display = 'none';
                         document.getElementById('formLogin').style.display = 'block';
                         msgBox.innerText = '';
-                    }, 1500);
+                    }, 4000);
                 } else {
                     msgBox.innerText = data.message || "Gagal mendaftarkan akun.";
                     msgBox.style.color = "#ef4444";
@@ -150,7 +150,7 @@ export function attachAuthEvents() {
                     msgBox.innerText = "Login Berhasil! Mengalihkan...";
                     msgBox.style.color = "#10b981";
 
-                    localStorage.setItem('user_servisku', JSON.stringify(data.user));
+                    localStorage.setItem('user_servisku', JSON.stringify({ ...data.user, token: data.token }));
 
                     setTimeout(() => {
                         if (data.user.role === 'guru') {

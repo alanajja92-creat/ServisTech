@@ -14,6 +14,7 @@ import {
     ambilDataServisGuru,
 } from './pages/dashboard.js';
 import { routeTambahServis, isiUsernameOtomatis, attachServisFormEvents } from './pages/servis-form.js';
+import { routePersetujuan, muatAkunPending, attachPersetujuanEvents } from './pages/persetujuan.js';
 import { routeServis, attachServisListEvents } from './pages/servis-list.js';
 import { routePoin, attachPoinGlobals } from './pages/poin.js';
 import { routePengaturan, isiProfilPengaturan, isiTemaToggle, attachThemeToggleEvent, attachLogoutEvent } from './pages/pengaturan.js';
@@ -28,6 +29,7 @@ const routes = {
     'servis': routeServis,
     'poin': routePoin,
     'pengaturan': routePengaturan,
+    'persetujuan': routePersetujuan,
     'detail-servis': routeDetailServis,
 };
 
@@ -54,6 +56,11 @@ export function initRouter() {
             // Jika GURU menekan tombol "Dashboard" utama (hash kosong)
             if (hash === '' && roleUser === 'guru') {
                 window.location.hash = 'dashboard-guru';
+                return;
+            }
+            // Halaman persetujuan akun: khusus guru (server tetap memeriksa ulang)
+            if (hash === 'persetujuan' && roleUser !== 'guru') {
+                window.location.hash = '';
                 return;
             }
             // Jika SISWA memaksa masuk ke dashboard guru
@@ -106,7 +113,7 @@ export function initRouter() {
         const navItems = document.querySelectorAll('.nav-item');
         navItems.forEach(item => item.classList.remove('active'));
 
-        let targetMenu = hash === 'dashboard-guru' ? '' : hash;
+        let targetMenu = hash === 'dashboard-guru' ? '' : (hash === 'persetujuan' ? 'pengaturan' : hash);
         const activeNav = document.querySelector(`.nav-item[data-target="${targetMenu}"]`);
         if (activeNav) {
             activeNav.classList.add('active');
@@ -129,6 +136,9 @@ export function initRouter() {
                 if (hash === 'dashboard-guru') {
                     // Khusus Guru di Dashboard
                     if (typeof ambilDataServisGuru === 'function') ambilDataServisGuru('dashboard');
+                } else if (hash === 'persetujuan') {
+                    // Khusus Guru di Halaman Persetujuan Akun
+                    muatAkunPending();
                 } else if (hash === 'servis') {
                     // Khusus Guru di Halaman Daftar Servis
                     if (typeof ambilDataServisGuru === 'function') ambilDataServisGuru('semua');
@@ -184,6 +194,7 @@ export function initRouter() {
     attachAuthEvents();
     attachLogoutEvent();
     attachThemeToggleEvent();
+    attachPersetujuanEvents();
     attachServisFormEvents();
     attachServisListEvents();
 
