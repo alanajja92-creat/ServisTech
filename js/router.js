@@ -6,7 +6,8 @@
 // ==========================================================
 import { jalankanLogikaInteraktif } from './interactive.js';
 
-import { routeLogin, attachAuthEvents } from './pages/login.js';
+import { getNamaJurusan } from './config.js';
+import { routeLogin, isiPilihanJurusan, attachAuthEvents } from './pages/login.js';
 import {
     routeDashboardSiswa,
     routeDashboardGuru,
@@ -98,6 +99,14 @@ export function initRouter() {
 
         // MASUKKAN HTML KE LAYAR (Wajib dilakukan sebelum merender data ke dalamnya)
         appDiv.innerHTML = content;
+        
+        // Tampilkan nama jurusan yang sedang dipakai di setiap teks berkelas 'nama-jurusan'
+        document.querySelectorAll('.nama-jurusan').forEach(el => { el.innerText = getNamaJurusan(); });
+
+        // Di halaman login, samakan pilihan jurusan dengan yang terakhir dipakai
+        if (hash === 'login') {
+            isiPilihanJurusan();
+        }
 
         // PERBAIKAN: sembunyikan menu navigasi bawah di halaman Login,
         // karena sebelumnya nav tetap tampil walau user belum masuk

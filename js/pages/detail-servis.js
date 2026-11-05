@@ -1,7 +1,7 @@
 // ==========================================================
 // HALAMAN DETAIL SERVIS
 // ==========================================================
-import { API_URL } from '../config.js';
+import { getApiUrl } from '../config.js';
 import { ambilDataServisGuru } from './dashboard.js';
 
 export const routeDetailServis = `
@@ -268,7 +268,7 @@ window.hitungDanKirimPoin = function(event) {
     tombolAsli.disabled = true;
 
     // 4. Kirim Data ke Google Apps Script
-    fetch(API_URL, {
+    fetch(getApiUrl(), {
         method: 'POST',
         body: JSON.stringify({
             action: "selesai_dan_poin",
@@ -335,7 +335,7 @@ window.simpanValidasiGuru = function(idServis, btn) {
     btn.disabled = true;
     btn.style.backgroundColor = "#64748b";
 
-    fetch(API_URL, {
+    fetch(getApiUrl(), {
         method: 'POST',
         body: JSON.stringify({
             action: "validasi_servis",

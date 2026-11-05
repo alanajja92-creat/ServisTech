@@ -4,7 +4,7 @@
 // Keputusan sebenarnya tetap diperiksa di server (Apps Script);
 // halaman ini hanya antarmukanya.
 // ==========================================================
-import { API_URL } from '../config.js';
+import { getApiUrl } from '../config.js';
 
 export const routePersetujuan = `
         <div class="dashboard-page">
@@ -86,7 +86,7 @@ export function muatAkunPending() {
     const container = document.getElementById('listPendingContainer');
     if (!sesi || !container) return;
 
-    fetch(API_URL, {
+    fetch(getApiUrl(), {
         method: 'POST',
         body: JSON.stringify({ action: 'get_pending_users', token: sesi.token })
     })
@@ -123,7 +123,7 @@ export function attachPersetujuanEvents() {
         btn.innerText = '⏳...';
         btn.disabled = true;
 
-        fetch(API_URL, {
+        fetch(getApiUrl(), {
             method: 'POST',
             body: JSON.stringify({
                 action: 'set_user_status',

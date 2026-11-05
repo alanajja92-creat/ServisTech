@@ -2,6 +2,7 @@
 // HALAMAN PENGATURAN (UMUM UNTUK SISWA & GURU)
 // ==========================================================
 import { isLightMode, toggleTheme } from '../theme.js';
+import { getNamaJurusan } from '../config.js';
 
 export const routePengaturan = `
         <div class="dashboard-page">
@@ -74,7 +75,7 @@ export function isiProfilPengaturan(sesiUser) {
     const roleLabel = sesiUser.role && sesiUser.role.toLowerCase() === 'guru' ? 'Guru' : 'Siswa';
 
     if (elNama) elNama.innerText = nama;
-    if (elRole) elRole.innerText = roleLabel + ' - Teknik Audio Video';
+    if (elRole) elRole.innerText = roleLabel + ' - ' + getNamaJurusan();
     if (elAvatar) elAvatar.innerText = nama.trim().charAt(0).toUpperCase() || 'U';
         // Menu Persetujuan Akun hanya untuk guru
     const menuPersetujuan = document.getElementById('menuPersetujuan');
@@ -106,6 +107,9 @@ export function attachLogoutEvent() {
         if (e.target.closest('#btnLogout') || e.target.id === 'btnLogout') {
             e.preventDefault();
             localStorage.removeItem('user_servisku');
+            // bersihkan data servis tersimpan, supaya tidak terbawa ke jurusan lain
+            localStorage.removeItem('cache_servis_siswa');
+            localStorage.removeItem('selected_servis_id');
             window.location.hash = 'login';
         }
     });
