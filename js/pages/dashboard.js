@@ -1,7 +1,7 @@
 // ==========================================================
 // HALAMAN DASHBOARD (SISWA & GURU)
 // ==========================================================
-import { API_URL } from '../config.js';
+import { getApiUrl } from '../config.js';
 import { renderHalamanServis } from './servis-list.js';
 
 // HALAMAN DASHBOARD SISWA
@@ -11,7 +11,7 @@ export const routeDashboardSiswa = `
             <div class="dashboard-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
                 <div>
                     <h3 class="app-brand" style="margin:0; font-size: 20px;" id="welcomeName">Halo, Pengguna!</h3>
-                    <p style="margin: 5px 0 0 0; color: var(--text-secondary); font-size: 13px;">Teknik Audio Video - ServisKu</p>
+                    <p style="margin: 5px 0 0 0; color: var(--text-secondary); font-size: 13px;"><span class="nama-jurusan">Teknik Audio Video</span> - ServisKu</p>
                 </div>
                 <!-- Poin Loyalty -->
                 <div style="background-color: var(--bg-card); padding: 8px 15px; border-radius: 10px; border: 1px solid var(--border-color); display: flex; align-items: center; gap: 8px;">
@@ -46,7 +46,7 @@ export const routeDashboardGuru = `
             <div class="dashboard-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
                 <div>
                     <h3 class="app-brand" style="margin:0; font-size: 20px;" id="welcomeName">Halo, Guru!</h3>
-                    <p style="margin: 5px 0 0 0; color: var(--text-secondary); font-size: 13px;">Panel Admin - Teknik Audio Video</p>
+                    <p style="margin: 5px 0 0 0; color: var(--text-secondary); font-size: 13px;">Panel Admin - <span class="nama-jurusan">Teknik Audio Video</span></p>
                 </div>
             </div>
 
@@ -94,7 +94,7 @@ export const routeDashboardGuru = `
 
 // Fungsi untuk memuat data servis siswa dari Google Sheets
 export function muatDataServisSiswa(username) {
-    fetch(API_URL, {
+    fetch(getApiUrl(), {
         method: 'POST',
         body: JSON.stringify({
             action: "get_servis",
@@ -166,7 +166,7 @@ export function renderDashboardSiswa(list) {
 export function ambilDataServisGuru(tujuanRender = 'dashboard') {
     console.log("Mulai mengambil data servis dari server...");
 
-    fetch(API_URL, {
+    fetch(getApiUrl(), {
         method: 'POST',
         body: JSON.stringify({ action: "get_all_servis" })
     })

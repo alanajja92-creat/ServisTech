@@ -1,7 +1,7 @@
 // ==========================================================
 // HALAMAN TAMBAH SERVIS
 // ==========================================================
-import { API_URL } from '../config.js';
+import { getApiUrl } from '../config.js';
 
 export const routeTambahServis = `
         <div class="tambah-servis-page">
@@ -155,7 +155,7 @@ export function attachServisFormEvents() {
                 msgBox.style.color = "#f59e0b";
             }
 
-            fetch(API_URL, {
+            fetch(getApiUrl(), {
                 method: 'POST',
                 body: JSON.stringify({
                     action: "tambah_servis",

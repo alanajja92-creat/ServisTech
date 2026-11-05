@@ -1,13 +1,21 @@
 // ==========================================================
 // HALAMAN LOGIN & DAFTAR
 // ==========================================================
-import { API_URL } from '../config.js';
+import { getApiUrl, getJurusan, setJurusan } from '../config.js';
 
 export const routeLogin = `
         <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 80vh; padding: 20px;">
             <div style="text-align: center; margin-bottom: 30px;">
                 <h2 class="app-brand" style="font-size: 32px; margin: 0;">ServisKu</h2>
-                <p style="color: var(--text-secondary); margin-top: 5px;">Sistem Bengkel TAV</p>
+                <p style="color: var(--text-secondary); margin-top: 5px;">Sistem Bengkel Sekolah</p>
+            </div>
+
+            <!-- PILIHAN JURUSAN (menentukan database yang dipakai) -->
+            <div style="width: 100%; max-width: 320px; margin-bottom: 15px;">
+                <select id="pilihJurusan" class="input-modern" style="width: 100%; box-sizing: border-box;">
+                    <option value="tav">Teknik Audio Video (TAV)</option>
+                    <option value="tsm">Teknik Sepeda Motor (TSM)</option>
+                </select>
             </div>
 
             <!-- FORM LOGIN -->
@@ -26,7 +34,7 @@ export const routeLogin = `
                 <input type="text" id="regUsername" placeholder="Username (NIS/NIP)" class="input-modern" style="margin-bottom: 15px; color: var(--text-secondary); width: 100%; box-sizing: border-box;">
                 <input type="password" id="regPassword" placeholder="Kata Sandi" class="input-modern" style="margin-bottom: 15px; color: var(--text-secondary); width: 100%; box-sizing: border-box;">
                 <select id="regRole" class="input-modern" style="margin-bottom: 20px; color: var(--text-secondary); width: 100%; box-sizing: border-box;">
-                    <option value="siswa">Siswa TAV</option>
+                    <option value="siswa">Siswa</option>
                     <option value="guru">Guru / Admin</option>
                 </select>
                 <button id="btnRegister" style="width: 100%; padding: 12px; background-color: #10b981; color: var(--text-primary); border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-bottom: 15px;">Daftar Akun</button>
@@ -38,10 +46,23 @@ export const routeLogin = `
         </div>
     `;
 
+// Menyamakan pilihan jurusan di halaman login dengan jurusan yang
+// terakhir dipakai (dipanggil router.js setiap halaman login dibuka)
+export function isiPilihanJurusan() {
+    const el = document.getElementById('pilihJurusan');
+    if (el) el.value = getJurusan();
+}
+
 // Menempelkan semua interaksi klik untuk form Login & Daftar
 // (toggle form, submit register, submit login). Dipanggil sekali
 // saat aplikasi diinisialisasi, sama seperti listener klik global aslinya.
 export function attachAuthEvents() {
+        // Memilih jurusan -> simpan, supaya login/daftar memakai database jurusan itu
+    document.addEventListener('change', (e) => {
+        if (e.target && e.target.id === 'pilihJurusan') {
+            setJurusan(e.target.value);
+        }
+    });
     document.addEventListener('click', (e) => {
         if (e.target.closest('#btnToRegister')) {
             const formLogin = document.getElementById('formLogin');
@@ -81,7 +102,7 @@ export function attachAuthEvents() {
             msgBox.innerText = "Menghubungi database...";
             msgBox.style.color = "#f59e0b";
 
-            fetch(API_URL, {
+            fetch(getApiUrl(), {
                 method: 'POST',
                 body: JSON.stringify({
                     action: "register",
@@ -136,7 +157,7 @@ export function attachAuthEvents() {
             msgBox.innerText = "Menghubungkan ke database...";
             msgBox.style.color = "#f59e0b";
 
-            fetch(API_URL, {
+            fetch(getApiUrl(), {
                 method: 'POST',
                 body: JSON.stringify({
                     action: "login",
